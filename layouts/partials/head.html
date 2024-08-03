@@ -115,7 +115,9 @@
   {{/* Vendor */}}
   {{ partial "vendor.html" . }}
   {{/* Analytics */}}
-  {{ partial "analytics/main.html" .Site }}
+  {{ if hugo.IsProduction }}
+    {{ partial "analytics/main.html" .Site }}
+  {{ end }}
   {{/* Extend head - eg. for custom analytics scripts, etc. */}}
   {{ if templates.Exists "partials/extend-head.html" }}
   {{ partialCached "extend-head.html" .Site }}
